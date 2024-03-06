@@ -49,10 +49,12 @@ public class CustomerJpaExam {
             System.out.println(customers);
             //em.flush(); */
 
-            Customer customer = new Customer();
-            customer.setName("Kim");
-            customer.setRegisterDate(System.currentTimeMillis());
-            em.persist(customer);
+            for(int i = 0 ; i<3 ; i++){
+                Customer customer = new Customer();
+                customer.setName("Kim");
+                customer.setRegisterDate(System.currentTimeMillis());
+                em.persist(customer);
+            }
 
             System.out.println("before commit");
 
