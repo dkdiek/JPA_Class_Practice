@@ -1,6 +1,8 @@
 package io.namoosori.customerexam;
 
 import io.namoosori.customerexam.entity.Customer;
+import io.namoosori.customerexam.entity.Major;
+import io.namoosori.customerexam.entity.Student;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -49,14 +51,32 @@ public class CustomerJpaExam {
             System.out.println(customers);
             //em.flush(); */
 
+            /*
             for(int i = 0 ; i<3 ; i++){
                 Customer customer = new Customer();
                 customer.setName("Kim");
                 customer.setRegisterDate(System.currentTimeMillis());
                 em.persist(customer);
             }
+            System.out.println("before commit"); */
 
-            System.out.println("before commit");
+            Major major = new Major("Computer Science","college of Engineering");
+            em.persist(major);
+
+            Student student = new Student("Kim","3");
+            student.setMajorId(major.getMajorId());
+            em.persist(student);
+
+            em.flush();
+            em.clear();
+
+            //Student 검색
+            Student foundStudent =  em.find(Student.class,1);
+            System.out.println(foundStudent);
+
+            Major foundMajor = em.find(Major.class,foundStudent.getMajorId());
+
+
 
             tx.commit(); // tx.rollback();
         } catch (Exception e){
