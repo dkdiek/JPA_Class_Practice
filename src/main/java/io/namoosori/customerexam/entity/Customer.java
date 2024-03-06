@@ -1,9 +1,6 @@
 package io.namoosori.customerexam.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Customer {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Long registerDate;
@@ -29,7 +26,7 @@ public class Customer {
     }
 
     public static Customer sample() {
-        return new Customer(1L,"Kim");
+        return new Customer();
     }
 
 }

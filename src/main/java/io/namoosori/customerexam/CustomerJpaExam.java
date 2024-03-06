@@ -36,12 +36,12 @@ public class CustomerJpaExam {
             System.out.println(customer1.toString()); */
 
 
-
+            /*
             Customer customer = new Customer(1L,"Jin"); // 비영속 상태(new)
             em.persist(customer); // customer 객체가 영속 상태(managed)
             //em.detach(customer); // 준영속 상태(Detached)
             Customer foundCustomer = em.find(Customer.class, "ID0005");
-            System.out.println(foundCustomer.toString());
+            System.out.println(foundCustomer.toString()); */
 
             /* JPQL
             Query query = em.createQuery("Select c From Customer c", Customer.class);
@@ -49,12 +49,12 @@ public class CustomerJpaExam {
             System.out.println(customers);
             //em.flush(); */
 
+            Customer customer = new Customer();
+            customer.setName("Kim");
+            customer.setRegisterDate(System.currentTimeMillis());
+            em.persist(customer);
 
-
-
-
-
-
+            System.out.println("before commit");
 
             tx.commit(); // tx.rollback();
         } catch (Exception e){
