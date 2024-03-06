@@ -14,10 +14,27 @@ public class CustomerJpaExam {
 
         tx.begin();
         //
-        em.persist(Customer.sample());
+        try{
+//저장            em.persist(Customer.sample());
+//조회           Customer customer = em.find(Customer.class, "ID0001");
 
-        tx.commit(); // tx.rollback();
-        em.close();
+            /* 업데이트
+            Customer foundCustomer = em.find(Customer.class, "ID0001");
+            foundCustomer.setName("Park"); */
+
+            /* 삭제
+            Customer foundCustomer = em.find(Customer.class, "ID0001");
+            em.remove(foundCustomer); */
+
+
+
+            tx.commit(); // tx.rollback();
+        } catch (Exception e){
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        //
         emf.close();
     }
 }
