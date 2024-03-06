@@ -12,9 +12,16 @@ import lombok.ToString;
 @Setter
 @Getter
 @NoArgsConstructor
+@SequenceGenerator(
+        name="customer_generator",
+        sequenceName = "customer_seq",
+        initialValue = 1,
+        allocationSize = 1
+)
 public class Customer {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_generator")
     private Long id;
     private String name;
     private Long registerDate;
