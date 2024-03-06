@@ -37,10 +37,12 @@ public class CustomerJpaExam {
 
 
 
-            Customer customer = new Customer("ID0004","Hong"); // 비영속 상태(new)
+            Customer customer = new Customer("ID0005","Jin"); // 비영속 상태(new)
             em.persist(customer); // customer 객체가 영속 상태(managed)
+            em.detach(customer); // 준영속 상태(Detached)
+            Customer foundCustomer = em.find(Customer.class, "ID0005");
+            System.out.println(foundCustomer.toString());
 
-            
             /* JPQL
             Query query = em.createQuery("Select c From Customer c", Customer.class);
             List customers = query.getResultList();
