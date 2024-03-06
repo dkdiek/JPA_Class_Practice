@@ -26,6 +26,11 @@ public class CustomerJpaExam {
             Customer foundCustomer = em.find(Customer.class, "ID0001");
             em.remove(foundCustomer); */
 
+            Customer customer = new Customer("ID0001","Kim");
+            em.persist(customer);
+            //1차 캐시에 ID0001이 있어 select문이 실행안되고 조회가 된다
+            Customer customer1 = em.find(Customer.class, "ID0001");
+            System.out.println(customer1.toString());
 
 
             tx.commit(); // tx.rollback();
