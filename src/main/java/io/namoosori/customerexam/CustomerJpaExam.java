@@ -60,11 +60,12 @@ public class CustomerJpaExam {
             }
             System.out.println("before commit"); */
 
+
             Major major = new Major("Computer Science","college of Engineering");
             em.persist(major);
 
             Student student = new Student("Kim","3");
-            student.setMajorId(major.getMajorId());
+            student.setMajor(major);
             em.persist(student);
 
             em.flush();
@@ -74,7 +75,7 @@ public class CustomerJpaExam {
             Student foundStudent =  em.find(Student.class,1);
             System.out.println(foundStudent);
 
-            Major foundMajor = em.find(Major.class,foundStudent.getMajorId());
+       //     Major foundMajor = em.find(Major.class,foundStudent.getMajorId());
 
 
 

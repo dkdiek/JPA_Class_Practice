@@ -1,9 +1,6 @@
 package io.namoosori.customerexam.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,7 +18,10 @@ public class Student {
     private Long studentId;
     private String name;
     private String grade;
-    private Long majorId;
+
+    @ManyToOne
+    @JoinColumn(name="MAJORID")
+    private Major major;
 
     public Student(String name, String grade) {
         this.name = name;
