@@ -19,7 +19,7 @@ public class Student {
     private String name;
     private String grade;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="MAJORID")
     private Major major;
 

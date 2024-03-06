@@ -73,7 +73,7 @@ public class CustomerJpaExam {
 
             //Student 검색
             Student foundStudent =  em.find(Student.class,1);
-            System.out.println(foundStudent);
+            System.out.println(foundStudent.getName());
 
        //     Major foundMajor = em.find(Major.class,foundStudent.getMajorId());
 
